@@ -746,7 +746,10 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
+// 96 for stock extruder is correct, but 95% looks even better
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 93 }
+// now with BMG extruder
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 415 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -993,7 +996,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -40, -12, -2.2 }
+#define NOZZLE_TO_PROBE_OFFSET { -40, -12, -1.55 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
