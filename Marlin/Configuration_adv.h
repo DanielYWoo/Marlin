@@ -2775,8 +2775,8 @@
  *  - Other output doesn't need to be that speedy.
  * :[0, 2, 4, 8, 16, 32, 64, 128, 256]
  */
-// without this, busy tasks like PID autotune will timeout the serial connection
-#define TX_BUFFER_SIZE 32
+// without this, busy tasks like PID autotune could timeout the serial connection
+#define TX_BUFFER_SIZE 64
 
 /**
  * Host Receive Buffer Size
@@ -2784,7 +2784,7 @@
  * To use flow control, set this buffer size to at least 1024 bytes.
  * :[0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
  */
-// without this, busy tasks like PID autotune will timeout the serial connection
+// without this, busy tasks like PID autotune could timeout the serial connection
 #define RX_BUFFER_SIZE 128
 
 #if RX_BUFFER_SIZE >= 1024
@@ -4084,7 +4084,8 @@
 /**
  * Auto-report temperatures with M155 S<seconds>
  */
-#define AUTO_REPORT_TEMPERATURES
+// oh fuck, there is a bug in this feature, either no temp at all, or the serial port is flooded,
+//#define AUTO_REPORT_TEMPERATURES
 #if ENABLED(AUTO_REPORT_TEMPERATURES) && TEMP_SENSOR_REDUNDANT
   //#define AUTO_REPORT_REDUNDANT // Include the "R" sensor in the auto-report
 #endif
